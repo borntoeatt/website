@@ -14,14 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Replace Google Analytics ID
-      - name: Inject Google Analytics ID
-        run: |
-          sed -i "s/GOOGLE_ANALYTICS_ID/${{ secrets.GOOGLE_ANALYTICS_ID }}/g" index.html
-
-      # Step 3: Deploy to GitHub Pages
+      # Step 2: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # Root directory (your HTML/CSS files are here)
+          publish_dir: .
+          force_orphan: true  # Overwrite the `gh-pages` branch completely
