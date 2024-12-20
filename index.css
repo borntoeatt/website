@@ -30,7 +30,7 @@ header .header-content p {
 
 /* Navigation Bar */
 nav {
-    background-color: #333; /* Black background */
+    background-color: #333; /* Dark background */
     padding: 0.5rem 0;
 }
 
@@ -73,7 +73,7 @@ h2 {
     margin-bottom: 1rem;
     font-size: 1.8rem;
     text-align: left;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid #e69b11;
     padding-bottom: 0.3rem;
 }
 
@@ -82,7 +82,7 @@ h2 {
     margin: 1rem 0;
     font-size: 1rem;
     line-height: 1.8;
-    color: #999191; /* Slightly darker text */
+    color: #000000; /* Slightly darker text */
 }
 
 /* Experience & Projects Section */
@@ -124,7 +124,7 @@ h2 {
 
 /* Footer */
 footer {
-    background-color: #333; /* Black background */
+    background-color: #333; /* Dark Grey background */
     color: #ffffff; /* White text */
     text-align: center;
     padding: 1rem 0;
@@ -169,7 +169,7 @@ footer {
     text-decoration: none;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 2.3s ease, transform 2.2s ease;
 }
 
 .button:hover {
@@ -199,19 +199,22 @@ body {
 
 /* Dark mode styles */
 body.dark-mode {
-    background-color: #121212; /* Dark background */
+    background-color: #000000; /* Black background */
     color: #ffffff; /* Light text color */
 }
 
 body.dark-mode a {
-    color: #f7de01; /* Yellow color for links in dark mode */
+    color: #e69b11; /* Papaya color for links in dark mode */
 }
 
 /* Dark mode for specific elements */
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3,
-body.dark-mode p {
+body.dark-mode p, 
+body.dark-mode h4
+body.dark-mode h5
+{
     color: #ffffff; /* Ensure headings and paragraphs are white in dark mode */
 }
 
@@ -241,7 +244,7 @@ body.dark-mode {
 
 /* Dark mode for specific elements */
 body.dark-mode header {
-    background-color: #1e1e2f; /* Darker background for header */
+    background-color: #003166; /* Darker background for header */
 }
 
 body.dark-mode main {
@@ -258,7 +261,7 @@ body.dark-mode nav ul li a {
 }
 
 body.dark-mode nav ul li a:hover {
-    color: #f7de01; /* Yellow hover effect */
+    color: #e69b11; /* Papaya hover effect */
 }
 
 body.dark-mode h1,
@@ -269,20 +272,20 @@ body.dark-mode p {
 }
 
 body.dark-mode h2 {
-    border-bottom: 2px solid #4caf50; /* Yellow underline for section titles */
+    border-bottom: 2px solid #e69b11; /* Papaya underline for section titles */
 }
 
 body.dark-mode a {
-    color: #f7de01; /* Yellow links */
+    color: #e69b11; /* Papaya links */
 }
 
 body.dark-mode a:hover {
-    color: #f7de01; /* Light Yellow hover effect */
+    color: #996709; /* Dark Papaya hover effect */
 }
 
 body.dark-mode .job,
 body.dark-mode .project {
-    background-color: #2a2a2a; /* Card background */
+    background-color: #1a1a1a; /* Previous Experience background */
     border-color: #3a3a3a; /* Subtle border */
 }
 
@@ -322,7 +325,7 @@ body {
 }
 
 .dark-mode-toggle:hover {
-    background-color: #347fe2;
+    background-color: #0078d7;
     color: #ffffff;
 }
 
@@ -362,4 +365,12 @@ body {
 }
 
 
+footer a {
+    color: #e69b11 /* Replace with your desired color */
+    
+    
+}
 
+footer a:hover {
+    color: #996709; /* Change to your hover color */
+}
