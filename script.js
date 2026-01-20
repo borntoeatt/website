@@ -58,3 +58,105 @@ function smoothScrollTo(target, offset = 0, duration = 800) {
 
     requestAnimationFrame(animationLoop); // Start the animation loop
 }
+
+// PDF Export Functionality
+const exportPdfBtn = document.getElementById('exportPdfBtn');
+if (exportPdfBtn) {
+    exportPdfBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Check if html2pdf is loaded
+        if (typeof html2pdf === 'undefined') {
+            alert('PDF library is still loading. Please try again in a moment.');
+            return;
+        }
+        
+        const element = document.getElementById('resume-content');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        
+        // Temporarily switch to light mode for PDF
+        if (isDarkMode) {
+            document.body.classList.remove('dark-mode');
+        }
+        
+        // Show URL only during PDF generation
+        const pdfOnlyElements = document.querySelectorAll('.pdf-only');
+        pdfOnlyElements.forEach(el => {
+            el.style.display = 'block';
+        });
+        
+        // Show PDF header
+        const pdfHeader = document.querySelector('.pdf-header');
+        if (pdfHeader) {
+            pdfHeader.style.display = 'block';
+        }
+        
+        // Hide Home Lab section for PDF
+        const homelabSection = document.getElementById('homelab');
+        let homelabDisplay = '';
+        
+        if (homelabSection) {
+            homelabDisplay = homelabSection.style.display;
+            homelabSection.style.display = 'none';
+        }
+        
+        const opt = {
+            margin: 0.5,
+            filename: 'Dimitar_Porkov_Portfolio.pdf',
+            image: { type: 'jpeg', quality: 0.95 },
+            html2canvas: { 
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                letterRendering: true,
+                scrollY: 0,
+                scrollX: 0
+            },
+            jsPDF: { 
+                unit: 'in', 
+                format: 'letter', 
+                orientation: 'portrait'
+            }
+        };
+        
+        // Generate PDF
+        html2pdf().set(opt).from(element).save().then(() => {
+            // Hide URL again after PDF generation
+            pdfOnlyElements.forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Hide PDF header again
+            if (pdfHeader) {
+                pdfHeader.style.display = 'none';
+            }
+            
+            // Show Home Lab section again
+            if (homelabSection) {
+                homelabSection.style.display = homelabDisplay;
+            }
+            
+            // Restore dark mode if it was enabled
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+            }
+        }).catch(err => {
+            console.error('PDF generation error:', err);
+            alert('Error generating PDF. Please try again.');
+            
+            // Restore state on error
+            pdfOnlyElements.forEach(el => {
+                el.style.display = 'none';
+            });
+            if (pdfHeader) {
+                pdfHeader.style.display = 'none';
+            }
+            if (homelabSection) {
+                homelabSection.style.display = homelabDisplay;
+            }
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    });
+}

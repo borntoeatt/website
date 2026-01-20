@@ -405,3 +405,39 @@ body.dark-mode .recommendation-button:hover {
     background-color: #0056b3 !important;
     color: #ffffff !important;
 }
+
+/* Fix about-text visibility in dark mode */
+body.dark-mode .about-text p,
+body.dark-mode .about-text strong {
+    color: #ffffff !important;
+}
+
+/* Fix about-text visibility in dark mode */
+body.dark-mode .about-text p,
+body.dark-mode .about-text strong {
+    color: #ffffff !important;
+}
+
+/* Fix About Me section text in dark mode */
+body.dark-mode #about .about-text p,
+body.dark-mode #about .about-text strong {
+    color: #ffffff !important;
+}
+
+/* Force about-text to be visible in dark mode */
+body.dark-mode .about-text,
+body.dark-mode .about-text p,
+body.dark-mode .about-text strong {
+    color: #ffffff !important;
+}
+
+/* Hide PDF header on website, show only in PDF */
+.pdf-header {
+    display: none;
+}
+
+@media print {
+    .pdf-header {
+        display: block !important;
+    }
+}
