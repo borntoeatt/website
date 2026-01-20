@@ -24,6 +24,11 @@ toggleButton.addEventListener('click', () => {
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        // Don't prevent default for PDF export button
+        if (this.id === 'exportPdfBtn') {
+            return;
+        }
+        
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         const offset = 50; // Adjust this value based on your sticky header height
@@ -58,3 +63,44 @@ function smoothScrollTo(target, offset = 0, duration = 800) {
 
     requestAnimationFrame(animationLoop); // Start the animation loop
 }
+
+// PDF Export Functionality
+document.getElementById('exportPdfBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    const element = document.getElementById('resume-content');
+    
+    // Store original background
+    const originalBg = document.body.style.backgroundColor;
+    const originalColor = document.body.style.color;
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    
+    // Temporarily switch to light mode for PDF
+    if (isDarkMode) {
+        document.body.classList.remove('dark-mode');
+    }
+    
+    const opt = {
+        margin: 0.5,
+        filename: 'Dimitar_Porkov_Portfolio.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+            scale: 2,
+            useCORS: true,
+            logging: false
+        },
+        jsPDF: { 
+            unit: 'in', 
+            format: 'letter', 
+            orientation: 'portrait' 
+        }
+    };
+    
+    // Generate PDF
+    html2pdf().set(opt).from(element).save().then(() => {
+        // Restore dark mode if it was enabled
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+        }
+    });
+});
