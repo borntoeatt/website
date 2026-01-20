@@ -93,12 +93,23 @@ if (exportPdfBtn) {
             el.style.display = 'block';
         });
         
-        // Hide logo for PDF
-        const logo = document.querySelector('.logo');
-        const logoParent = logo ? logo.parentElement : null;
-        const originalLogoDisplay = logoParent ? logoParent.style.display : '';
-        if (logoParent) {
-            logoParent.style.display = 'none';
+        // Hide Home Lab section for PDF
+        const homelabSection = document.getElementById('homelab');
+        const homelabParent = homelabSection ? homelabSection.parentElement : null;
+        let homelabDisplay = '';
+        let logoDisplay = '';
+        
+        // Find and hide the homelab section and logo
+        if (homelabSection) {
+            homelabDisplay = homelabSection.style.display;
+            homelabSection.style.display = 'none';
+        }
+        
+        // Also hide the logo paragraph that comes after
+        const logoParagraph = document.querySelector('.logo');
+        if (logoParagraph && logoParagraph.parentElement) {
+            logoDisplay = logoParagraph.parentElement.style.display;
+            logoParagraph.parentElement.style.display = 'none';
         }
         
         const opt = {
@@ -127,9 +138,14 @@ if (exportPdfBtn) {
                 el.style.display = 'none';
             });
             
+            // Show Home Lab section again
+            if (homelabSection) {
+                homelabSection.style.display = homelabDisplay;
+            }
+            
             // Show logo again
-            if (logoParent) {
-                logoParent.style.display = originalLogoDisplay;
+            if (logoParagraph && logoParagraph.parentElement) {
+                logoParagraph.parentElement.style.display = logoDisplay;
             }
             
             // Restore dark mode if it was enabled
@@ -144,8 +160,11 @@ if (exportPdfBtn) {
             pdfOnlyElements.forEach(el => {
                 el.style.display = 'none';
             });
-            if (logoParent) {
-                logoParent.style.display = originalLogoDisplay;
+            if (homelabSection) {
+                homelabSection.style.display = homelabDisplay;
+            }
+            if (logoParagraph && logoParagraph.parentElement) {
+                logoParagraph.parentElement.style.display = logoDisplay;
             }
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
