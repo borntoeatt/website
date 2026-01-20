@@ -80,24 +80,39 @@ document.getElementById('exportPdfBtn').addEventListener('click', function(e) {
         document.body.classList.remove('dark-mode');
     }
     
+    // Show URL only during PDF generation
+    const pdfOnlyElements = document.querySelectorAll('.pdf-only');
+    pdfOnlyElements.forEach(el => {
+        el.style.display = 'block';
+    });
+    
     const opt = {
-        margin: 0.5,
+        margin: [0.5, 0.5, 0.5, 0.5],
         filename: 'Dimitar_Porkov_Portfolio.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
-            scale: 2,
+            scale: 1.5,
             useCORS: true,
-            logging: false
+            logging: false,
+            width: 816,  // 8.5 inches at 96 DPI
+            windowWidth: 816
         },
         jsPDF: { 
             unit: 'in', 
             format: 'letter', 
-            orientation: 'portrait' 
-        }
+            orientation: 'portrait',
+            compress: true
+        },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
     };
     
     // Generate PDF
     html2pdf().set(opt).from(element).save().then(() => {
+        // Hide URL again after PDF generation
+        pdfOnlyElements.forEach(el => {
+            el.style.display = 'none';
+        });
+        
         // Restore dark mode if it was enabled
         if (isDarkMode) {
             document.body.classList.add('dark-mode');
