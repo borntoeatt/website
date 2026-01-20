@@ -80,6 +80,17 @@ main {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Hide PDF header on website, show only in PDF */
+.pdf-header {
+    display: none;
+}
+
+@media print {
+    .pdf-header {
+        display: block !important;
+    }
+}
+
 /* Section Titles */
 h2 {
     color: #007bff; /* Blue section titles */

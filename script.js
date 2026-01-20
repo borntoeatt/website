@@ -93,6 +93,12 @@ if (exportPdfBtn) {
             el.style.display = 'block';
         });
         
+        // Show PDF header
+        const pdfHeader = document.querySelector('.pdf-header');
+        if (pdfHeader) {
+            pdfHeader.style.display = 'block';
+        }
+        
         // Hide Home Lab section for PDF
         const homelabSection = document.getElementById('homelab');
         const homelabParent = homelabSection ? homelabSection.parentElement : null;
@@ -138,6 +144,11 @@ if (exportPdfBtn) {
                 el.style.display = 'none';
             });
             
+            // Hide PDF header again
+            if (pdfHeader) {
+                pdfHeader.style.display = 'none';
+            }
+            
             // Show Home Lab section again
             if (homelabSection) {
                 homelabSection.style.display = homelabDisplay;
@@ -160,6 +171,9 @@ if (exportPdfBtn) {
             pdfOnlyElements.forEach(el => {
                 el.style.display = 'none';
             });
+            if (pdfHeader) {
+                pdfHeader.style.display = 'none';
+            }
             if (homelabSection) {
                 homelabSection.style.display = homelabDisplay;
             }

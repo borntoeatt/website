@@ -25,11 +25,10 @@
 </head>
 <body>
     <button class="dark-mode-toggle" id="darkModeToggle">Toggle Dark Mode</button>
-    <header>
+    <header class="no-print">
         <div class="header-content">
             <h1>Hi, I'm Dimitar Porkov</h1>
             <p>Cloud Operations Engineer for SAP </p>
-            <p class="pdf-only" style="display: none;">https://portfolio.dporkov.tech</p>
         </div>
     </header>
     <nav>
@@ -42,6 +41,11 @@
         </ul>
     </nav>
     <main id="resume-content">
+        <div class="pdf-header" style="text-align: center; margin-bottom: 1rem;">
+            <h1 style="margin: 0; font-size: 2rem; color: #1F4E78;">Hi, I'm Dimitar Porkov</h1>
+            <p style="margin: 0.3rem 0; font-size: 1.1rem;">Cloud Operations Engineer for SAP</p>
+            <p class="pdf-only" style="display: none; font-size: 0.9rem; font-style: italic; color: #666;">https://portfolio.dporkov.tech</p>
+        </div>
         <section id="about">
             <h2>About Me</h2>
             <div class="profile-container">
@@ -159,6 +163,10 @@
                     <img src="cloudie-logo.png" alt="Cloudtobe Logo" class="logo">
                 </a>
             </p>
+            
+            
+            
+
 
     </main>
     <footer class="no-print">
@@ -171,5 +179,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
