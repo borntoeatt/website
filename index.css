@@ -179,6 +179,11 @@ footer {
         display: none !important;
     }
     
+    /* Hide the homelab logo in PDF */
+    .logo {
+        display: none !important;
+    }
+    
     /* Show URL only in PDF */
     .pdf-only {
         display: block !important;
