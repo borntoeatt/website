@@ -57,6 +57,19 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Export PDF Button Styling */
+.export-pdf-btn {
+    background-color: #e69b11 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.export-pdf-btn:hover {
+    background-color: #996709 !important;
+    text-decoration: none !important;
+}
+
 /* Main Content */
 main {
     max-width: 1100px;
@@ -158,6 +171,43 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/* Print Styles for PDF Export */
+@media print {
+    /* Hide navigation, buttons, and non-essential elements */
+    nav, .no-print, .dark-mode-toggle, footer {
+        display: none !important;
+    }
+    
+    /* Optimize for printing */
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+    
+    main {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Ensure images print well */
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Avoid breaking content across pages */
+    h2, h3 {
+        page-break-after: avoid;
+        color: #007bff !important;
+    }
+    
+    .job, .project, .experience-item {
+        page-break-inside: avoid;
+    }
+}
+
 /* Button Style */
 .button {
     display: inline-block;
