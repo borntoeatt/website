@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dimitar - Portfolio</title>
-
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="styles.css?v=1.1">
 
@@ -23,7 +22,7 @@
 
 <body>
 
-<button class="dark-mode-toggle no-print" id="darkModeToggle">Toggle Dark Mode</button>
+<button class="dark-mode-toggle" id="darkModeToggle">Toggle Dark Mode</button>
 
 <header class="no-print">
     <div class="header-content">
@@ -44,11 +43,11 @@
 
 <main id="resume-content">
 
-    <!-- PDF Header -->
+    <!-- PDF Header (hidden on website, shown in PDF) -->
     <div class="pdf-header" style="text-align:center;margin-bottom:1rem;">
         <h1 style="margin:0;color:#1F4E78;">Dimitar Porkov</h1>
         <p>Cloud Operations Engineer for SAP</p>
-        <p class="pdf-only" style="display:none;font-style:italic;">
+        <p class="pdf-only" style="display:none;font-style:italic;color:#666;">
             https://portfolio.dporkov.tech
         </p>
     </div>
@@ -163,14 +162,14 @@
         <p>Email: <a href="mailto:dimitar@dporkov.tech">dimitar@dporkov.tech</a></p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/dimitarporkov">dporkov</a></p>
         <p style="margin-top: 1rem;">
-            <a href="\Dox\Akkodis_Letter_of_Recommendation.pdf" target="_blank" class="button">
+            <a href="\Dox\Akkodis_Letter_of_Recommendation.pdf" target="_blank" class="recommendation-button">
                 📄 Letter of Recommendation
             </a>
         </p>
     </section>
 
     <!-- Home Lab -->
-    <section id="homelab" style="position: relative;">
+    <section id="homelab">
         <h2>Home Lab</h2>
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
             <div style="flex: 1;">
@@ -184,7 +183,7 @@
             </div>
             <div style="margin-left: 2rem;">
                 <a href="https://nextcloud.cloudtobe.online/index.php/s/imMcmtf6kewaSAa" target="_blank">
-                    <img src="cloudie-logo.png" alt="Cloudtobe Logo" class="logo" style="width: 180px; height: auto;">
+                    <img src="cloudie-logo.png" alt="Cloudtobe Logo" class="logo" style="width: 120px; height: auto;">
                 </a>
             </div>
         </div>
@@ -193,4 +192,9 @@
 </main>
 
 <footer class="no-print">
-    <p>&copy; 2024 Dimitar Porkov. All rights reserved.</p>
+    <p>© 2024 Dimitar Porkov. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

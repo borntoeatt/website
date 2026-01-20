@@ -57,19 +57,6 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Export PDF Button Styling */
-.export-pdf-btn {
-    background-color: #e69b11 !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 5px !important;
-    transition: background-color 0.3s ease !important;
-}
-
-.export-pdf-btn:hover {
-    background-color: #996709 !important;
-    text-decoration: none !important;
-}
-
 /* Main Content */
 main {
     max-width: 1100px;
@@ -78,17 +65,6 @@ main {
     background-color: #ffffff; /* White background */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Hide PDF header on website, show only in PDF */
-.pdf-header {
-    display: none;
-}
-
-@media print {
-    .pdf-header {
-        display: block !important;
-    }
 }
 
 /* Section Titles */
@@ -182,92 +158,23 @@ footer {
         font-size: 1.5rem;
     }
 }
-
-/* Print Styles for PDF Export */
-@media print {
-    /* Hide navigation, buttons, and non-essential elements */
-    nav, .no-print, .dark-mode-toggle, footer {
-        display: none !important;
-    }
-    
-    /* Hide the homelab logo in PDF */
-    .logo {
-        display: none !important;
-    }
-    
-    /* Show URL only in PDF */
-    .pdf-only {
-        display: block !important;
-        font-size: 0.9rem !important;
-        margin-top: 0.3rem !important;
-        font-style: italic !important;
-        color: #666666 !important;
-    }
-    
-    /* Optimize for printing */
-    body {
-        background-color: white !important;
-        color: black !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    main {
-        box-shadow: none !important;
-        margin: 0 !important;
-        padding: 0.5in !important;
-        max-width: 100% !important;
-        width: 100% !important;
-    }
-    
-    /* Ensure proper sizing for profile pic */
-    .profile-pic {
-        width: 120px !important;
-        height: 120px !important;
-        max-width: 120px !important;
-    }
-    
-    /* Ensure images print well */
-    img {
-        max-width: 100% !important;
-        page-break-inside: avoid;
-    }
-    
-    /* Avoid breaking content across pages */
-    h2, h3 {
-        page-break-after: avoid;
-        color: #007bff !important;
-    }
-    
-    .job, .project, .experience-item {
-        page-break-inside: avoid;
-    }
-    
-    /* Better spacing for PDF */
-    p, ul, li {
-        margin: 0.4rem 0 !important;
-    }
-}
-
 /* Button Style */
 .button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff; /* Blue background */
-    color: #ffffff !important; /* White text - force it */
+    color: #ffffff; /* White text */
     font-size: 1rem;
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 2.3s ease, transform 2.2s ease;
 }
 
 .button:hover {
     background-color: #0056b3; /* Darker blue on hover */
     transform: translateY(-2px); /* Slight lift on hover */
-    color: #ffffff !important; /* Keep white text on hover */
-    text-decoration: none;
 }
 /* Logo Style */
 .logo {
@@ -298,16 +205,6 @@ body.dark-mode {
 
 body.dark-mode a {
     color: #e69b11; /* Papaya color for links in dark mode */
-}
-
-/* Keep buttons blue in dark mode */
-body.dark-mode .button {
-    background-color: #007bff !important;
-    color: #ffffff !important;
-}
-
-body.dark-mode .button:hover {
-    background-color: #0056b3 !important;
 }
 
 /* Dark mode for specific elements */
@@ -419,18 +316,17 @@ body {
     top: 20px;
     right: 20px;
     background-color: #000000;
-    color: #ffffff !important;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
     transition: background-color 0.5s;
-    z-index: 1000;
 }
 
 .dark-mode-toggle:hover {
     background-color: #0078d7;
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 /* Profile Picture Styles */
@@ -477,4 +373,35 @@ footer a {
 
 footer a:hover {
     color: #996709; /* Change to your hover color */
+}
+
+/* Letter of Recommendation button - always visible */
+.recommendation-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff !important;
+    color: #ffffff !important;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none !important;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.recommendation-button:hover {
+    background-color: #0056b3 !important;
+    transform: translateY(-2px);
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+body.dark-mode .recommendation-button {
+    background-color: #007bff !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .recommendation-button:hover {
+    background-color: #0056b3 !important;
+    color: #ffffff !important;
 }
