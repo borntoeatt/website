@@ -375,6 +375,22 @@ footer a:hover {
     color: #996709; /* Change to your hover color */
 }
 
+/* Export PDF Button - Yellow/Orange styling */
+.export-pdf-btn {
+    background-color: #e69b11 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.export-pdf-btn:hover {
+    background-color: #996709 !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+}
+
 /* Letter of Recommendation button - always visible */
 .recommendation-button {
     display: inline-block;
@@ -406,24 +422,6 @@ body.dark-mode .recommendation-button:hover {
     color: #ffffff !important;
 }
 
-/* Fix about-text visibility in dark mode */
-body.dark-mode .about-text p,
-body.dark-mode .about-text strong {
-    color: #ffffff !important;
-}
-
-/* Fix about-text visibility in dark mode */
-body.dark-mode .about-text p,
-body.dark-mode .about-text strong {
-    color: #ffffff !important;
-}
-
-/* Fix About Me section text in dark mode */
-body.dark-mode #about .about-text p,
-body.dark-mode #about .about-text strong {
-    color: #ffffff !important;
-}
-
 /* Force about-text to be visible in dark mode */
 body.dark-mode .about-text,
 body.dark-mode .about-text p,
@@ -440,26 +438,8 @@ body.dark-mode .about-text strong {
     .pdf-header {
         display: block !important;
     }
-}
-
-/* Export PDF Button - Yellow/Orange styling */
-.export-pdf-btn {
-    background-color: #e69b11 !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 5px !important;
-    transition: background-color 0.3s ease !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
-}
-
-.export-pdf-btn:hover {
-    background-color: #996709 !important;
-    text-decoration: none !important;
-    color: #ffffff !important;
-}
-
-/* Force page break before Experience section in PDF */
-@media print {
+    
+    /* Force page break before Experience section in PDF */
     #experience-projects {
         page-break-before: always !important;
         break-before: page !important;
