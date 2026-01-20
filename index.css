@@ -179,6 +179,15 @@ footer {
         display: none !important;
     }
     
+    /* Show URL only in PDF */
+    .pdf-only {
+        display: block !important;
+        font-size: 0.9rem !important;
+        margin-top: 0.3rem !important;
+        font-style: italic !important;
+        color: #666666 !important;
+    }
+    
     /* Optimize for printing */
     body {
         background-color: white !important;
@@ -188,7 +197,21 @@ footer {
     main {
         box-shadow: none !important;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 1rem !important;
+        max-width: 100% !important;
+    }
+    
+    /* Fix stretching - constrain content width */
+    #resume-content {
+        max-width: 7.5in !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Ensure proper sizing for profile pic */
+    .profile-pic {
+        width: 120px !important;
+        height: 120px !important;
+        max-width: 120px !important;
     }
     
     /* Ensure images print well */
@@ -205,6 +228,11 @@ footer {
     
     .job, .project, .experience-item {
         page-break-inside: avoid;
+    }
+    
+    /* Better spacing for PDF */
+    p, ul, li {
+        margin: 0.5rem 0 !important;
     }
 }
 
