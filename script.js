@@ -93,6 +93,14 @@ if (exportPdfBtn) {
             el.style.display = 'block';
         });
         
+        // Hide logo for PDF
+        const logo = document.querySelector('.logo');
+        const logoParent = logo ? logo.parentElement : null;
+        const originalLogoDisplay = logoParent ? logoParent.style.display : '';
+        if (logoParent) {
+            logoParent.style.display = 'none';
+        }
+        
         const opt = {
             margin: 0.5,
             filename: 'Dimitar_Porkov_Portfolio.pdf',
@@ -119,6 +127,11 @@ if (exportPdfBtn) {
                 el.style.display = 'none';
             });
             
+            // Show logo again
+            if (logoParent) {
+                logoParent.style.display = originalLogoDisplay;
+            }
+            
             // Restore dark mode if it was enabled
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
@@ -131,6 +144,9 @@ if (exportPdfBtn) {
             pdfOnlyElements.forEach(el => {
                 el.style.display = 'none';
             });
+            if (logoParent) {
+                logoParent.style.display = originalLogoDisplay;
+            }
             if (isDarkMode) {
                 document.body.classList.add('dark-mode');
             }
