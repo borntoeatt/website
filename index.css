@@ -441,3 +441,27 @@ body.dark-mode .about-text strong {
         display: block !important;
     }
 }
+
+/* Export PDF Button - Yellow/Orange styling */
+.export-pdf-btn {
+    background-color: #e69b11 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.export-pdf-btn:hover {
+    background-color: #996709 !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+}
+
+/* Force page break before Experience section in PDF */
+@media print {
+    #experience-projects {
+        page-break-before: always !important;
+        break-before: page !important;
+    }
+}
