@@ -4,178 +4,167 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dimitar - Portfolio</title>
+
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="styles.css?v=1.0"> <!-- This is clearing the cache -->
+    <link rel="stylesheet" href="styles.css?v=1.1">
 
-    <style></style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SY9C8QKKZY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SY9C8QKKZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SY9C8QKKZY');
+    </script>
 
-  gtag('config', 'G-SY9C8QKKZY');
-</script>
-
-<!-- html2pdf.js library for PDF export -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-    
+    <!-- html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
-    <button class="dark-mode-toggle" id="darkModeToggle">Toggle Dark Mode</button>
-    <header class="no-print">
-        <div class="header-content">
-            <h1>Hi, I'm Dimitar Porkov</h1>
-            <p>Cloud Operations Engineer for SAP </p>
+
+<button class="dark-mode-toggle no-print" id="darkModeToggle">Toggle Dark Mode</button>
+
+<header class="no-print">
+    <div class="header-content">
+        <h1>Hi, I'm Dimitar Porkov</h1>
+        <p>Cloud Operations Engineer for SAP</p>
+    </div>
+</header>
+
+<nav class="no-print">
+    <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#experience-projects">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#homelab">Home Lab</a></li>
+        <li><a href="#" id="exportPdfBtn" class="export-pdf-btn">📄 Export as PDF</a></li>
+    </ul>
+</nav>
+
+<main id="resume-content">
+
+    <!-- PDF Header -->
+    <div class="pdf-header" style="text-align:center;margin-bottom:1rem;">
+        <h1 style="margin:0;color:#1F4E78;">Dimitar Porkov</h1>
+        <p>Cloud Operations Engineer for SAP</p>
+        <p class="pdf-only" style="display:none;font-style:italic;">
+            https://portfolio.dporkov.tech
+        </p>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+        <h2>About Me</h2>
+
+        <div class="profile-container">
+            <img src="images/profile.jpg" alt="Dimitar Porkov" class="profile-pic">
+
+            <div class="about-text">
+                <strong>SAP CI Operations Professional | Cloud Technologies & CI/CD Specialist</strong>
+
+                <p>
+                    As a SAP CI Operations professional at Digitall, I specialize in
+                    <strong>Cloud Technologies</strong> with a strong foundation in
+                    <strong>CI/CD methodologies</strong>. With over
+                    <strong>five years of experience</strong>, I focus on delivering
+                    reliable, scalable, and innovative solutions.
+                </p>
+            </div>
         </div>
-    </header>
-    <nav>
+
+        <h3>Career Highlights</h3>
         <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#homelab">Home Lab</a></li>
-            <li><a href="#" id="exportPdfBtn" class="export-pdf-btn">📄 Export as PDF</a></li>
+            <li>
+                <strong>Transformative Migration Projects:</strong>
+                Played a pivotal role in major migration initiatives for
+                <strong>Johnson Controls International (JCI)</strong> and
+                <strong>Tyco Industries</strong>.
+            </li>
+            <li>
+                <strong>Strategic System Transitions:</strong>
+                Contributed to SAP's <strong>OneStrike</strong> and
+                <strong>Apache Camel 3.x</strong> migrations, collaborating with
+                technical and business teams to ensure smooth transitions.
+            </li>
         </ul>
-    </nav>
-    <main id="resume-content">
-        <div class="pdf-header" style="text-align: center; margin-bottom: 1rem;">
-            <h1 style="margin: 0; font-size: 2rem; color: #1F4E78;">Hi, I'm Dimitar Porkov</h1>
-            <p style="margin: 0.3rem 0; font-size: 1.1rem;">Cloud Operations Engineer for SAP</p>
-            <p class="pdf-only" style="display: none; font-size: 0.9rem; font-style: italic; color: #666;">https://portfolio.dporkov.tech</p>
-        </div>
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="profile-container">
-                <img src="images/profile.jpg" alt="Dimitar Porkov" class="profile-pic">
-                <div class="about-text">
-                    
-                    <p><h5></h5><strong>SAP CI Operations Professional | Cloud Technologies & CI/CD Specialist</strong></p>
-                    <p>
-                    <h4>
-                        As a SAP CI Operations professional at Digitall, I specialize in 
-                        <strong>Cloud Technologies</strong> and possess a strong foundation in 
-                        <strong>CI/CD methodologies</strong>. With over <strong>five years of experience</strong>, 
-                        I am passionate about driving innovation and delivering impactful solutions.
-                    </h4>    
-                    </p>
-                </div>
-            </div>
-        </section>
-        
-                <h3>Career Highlights</h3>
-                <ul>
-                    <li>
-                        <strong>Transformative Migration Projects:</strong> Played a pivotal role in major migration 
-                        initiatives for <strong>Johnson Controls International (JCI)</strong> and <strong>Tyco Industries</strong>, 
-                        gaining extensive experience in large-scale data migrations and systems integration.
-                    </li>
-                    <li>
-                        <strong>Strategic System Transitions:</strong> Contributed to SAP's <strong>OneStrike and Camel 3.x migration</strong>, 
-                        collaborating closely with technical and business teams to ensure a 
-                        smooth, strategic transition while meeting organizational objectives.
-                    </li>
-                </ul>
-                <h3>Passion & Vision</h3>
-                <p>
-                    Looking ahead, I am eager to explore emerging technologies and expand my contributions 
-                    to large-scale, impactful projects. My focus remains on innovation, efficiency, 
-                    and leveraging technology to solve complex challenges.
-                </p>
-                <h3>Beyond the Desk</h3>
-                <p>
-                    In my free time, I enjoy:
-                </p>
-                <ul>
-                    <li><strong>Cycling:</strong> For fitness and mental clarity.</li>
-                    <li><strong>Traveling:</strong> To discover new cultures and perspectives.</li>
-                    <li>
-                        Experimenting with <strong>self-hosted applications</strong> in my home lab, 
-                        continuously sharpening my technical skills.
-                    </li>
-                </ul>
-            </div>
-        </section>
-        
-            <!-- Experience & Projects Section -->
+
+        <h3>Beyond the Desk</h3>
+        <ul>
+            <li><strong>Cycling</strong> for fitness and focus</li>
+            <li><strong>Traveling</strong> to explore new cultures</li>
+            <li>Running <strong>self-hosted applications</strong> in my home lab</li>
+        </ul>
+    </section>
+
+    <!-- Experience -->
     <section id="experience-projects">
         <h2>Experience & Projects</h2>
 
-        <!-- Cloud Operations Engineer Experience -->
         <div class="experience-item">
             <h3>Cloud Operations Engineer</h3>
-    <p><strong>Company:</strong> Digitall</p>
+            <p><strong>Company:</strong> Digitall | <strong>Period:</strong> December 2022 – Present</p>
 
-    <div class="role-description">
-      <p><strong>Role:</strong> As a Cloud Operations Engineer at Digitall, I oversee and support all aspects of the SAP NEO environment across multiple global data centers, spanning over 20 landscapes and managing more than <strong>30,000 virtual machines</strong>. I participated in  migration to <strong>SLES 15</strong>, ensuring operational stability, performance, and minimal service disruption throughout the transition.</p>
+            <p>
+                I manage and support the SAP NEO environment across multiple global data centers,
+                overseeing <strong>20+ landscapes</strong> with more than
+                <strong>30,000 virtual machines</strong>.
+            </p>
 
-      <p>I work extensively with major public cloud providers — including <strong>Google Cloud</strong>, <strong>Microsoft Azure</strong>, <strong>Alibaba Cloud</strong>, and <strong>AWS</strong> — leveraging <strong>Cloud Foundry</strong> to manage, deploy, and scale applications across diverse environments. This multi-cloud exposure strengthens system scalability, security, and resilience.</p>
+            <p>
+                I work across <strong>Google Cloud</strong>, <strong>Microsoft Azure</strong>,
+                <strong>Alibaba Cloud</strong>, and <strong>AWS</strong> using
+                <strong>Cloud Foundry</strong> to deploy and scale applications.
+            </p>
 
-      <p>I collaborate closely with development teams to perform advanced troubleshooting, analyze system logs, and resolve complex issues efficiently, maintaining adherence to internal and external <strong>SLAs</strong>. I also support <strong>post-mortem analysis</strong> processes, providing actionable insights that help development teams improve platform reliability and product performance.</p>
+            <p>
+                Key contributions include <strong>SLES 15</strong> and
+                <strong>Apache Camel 3.x</strong> migrations, automation with
+                <strong>Jenkins</strong> and <strong>Autopilot</strong>, and
+                post-mortem analysis to improve platform reliability.
+            </p>
 
-      <p>A major highlight of my role includes contributing to the <strong>Apache Camel 3.x migration</strong> project — successfully transitioning multiple VMs to Camel 3.x with minimal downtime across SAP landscapes.</p>
-
-      <p>To further enhance operational efficiency, I actively <strong>automate workflows and procedures</strong> using tools like <strong>Jenkins</strong>, <strong>Autopilot</strong>, and other CI/CD solutions, streamlining deployments and reducing manual intervention.</p>
-
-      <ul>
-        <li>Collaborate closely with development and platform teams in a global, fast-paced environment.</li>
-        <li>Continuously learn and integrate new technologies to drive innovation and system improvement.</li>
-        <li>Perform deep troubleshooting and log analysis to identify and resolve critical infrastructure issues.</li>
-        <li>Ensure timely, high-quality support and resolution for requests aligned with defined SLAs.</li>
-        <li>Lead post-mortem reviews and provide feedback loops for continuous improvement.</li>
-        <li>Design and enhance platform monitoring, automated recovery, and performance optimization frameworks.</li>
-        <li>Automate deployment and operational processes using <strong>Jenkins</strong>, <strong>Autopilot</strong>, and internal DevOps pipelines.</li>
-      </ul>
-    </div>
-
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Advanced troubleshooting and log analysis</li>
+                <li>CI/CD automation and workflow optimization</li>
+                <li>SLA-driven support and incident resolution</li>
+                <li>Monitoring, recovery, and performance tuning</li>
+            </ul>
         </div>
     </section>
 
-            <section id="experience">
-                <h2>Previous Experience</h2>
-                    <div class="job">
-            
-                <h3>Technical support analyst</h3>
-                <p><strong>Company:</strong> Akkodis</p>
-                <p><strong>Role:</strong> Throughout my career, I've been fortunate to be part of transformative projects that have shaped the technological landscape of major industries. Working with Modis, I played a critical role in the mass migration initiatives for JCI (Johnson Controls International) and Tyco Industries, where I gained invaluable experience in large-scale data migrations and systems integration. These projects demanded a deep understanding of infrastructure, meticulous planning, and a collaborative approach to ensure seamless transitions without disrupting business operations.
+    <!-- Previous Experience -->
+    <section id="experience">
+        <h2>Previous Experience</h2>
 
-                    Through these experiences, I've developed a strong skill set in project management, data migration strategies, and cross-functional teamwork. Being able to contribute to such pivotal projects has fueled my passion for innovation and has solidified my commitment to driving impactful technological solutions in every organization I serve. </p>
-            </div>
+        <h3>Technical Support Analyst</h3>
+        <p><strong>Company:</strong> Akkodis | <strong>Period:</strong> November 2019 – December 2022</p>
+        <p>
+            Contributed to large-scale migration projects for JCI and Tyco Industries,
+            focusing on data migration, systems integration, and cross-team collaboration.
+        </p>
+    </section>
 
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Phone: +359 898 595 251</p>
+        <p>Email: <a href="mailto:dimitar@dporkov.tech">dimitar@dporkov.tech</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/dimitarporkov">dporkov</a></p>
+        <p><a href="\Dox\Akkodis_Letter_of_Recommendation.pdf" target="_blank" class="button" style="display: inline-block; margin-top: 1rem;">📄 Letter of Recommendation</a></p>
+    </section>
 
+    <section id="homelab">
+        <h2>Home Lab</h2>
+    </section>
 
-            </section>
-            <section id="contact">
-                <h2>Contact Me</h2>
-                <p>Phone: +359898595251
-                <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="66020f0b0f12071426021609140d0910481203050e">[email&#160;protected]</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/dimitarporkov">dporkov</a></p>
-            </section>
+</main>
 
-            <section id="homelab">
-            <h2>Home Lab</h2>
-            </section>
-            
-            <p class="no-print">
-                <a href="https://nextcloud.cloudtobe.online/index.php/s/imMcmtf6kewaSAa" target="_blank">
-                    <img src="cloudie-logo.png" alt="Cloudtobe Logo" class="logo">
-                </a>
-            </p>
-            
-            
-            
+<footer class="no-print">
+    <p>© 2024 Dimitar Porkov. All rights reserved.</p>
+</footer>
 
-
-    </main>
-    <footer class="no-print">
-    
-        <p>© 2024 Dimitar Porkov. All rights reserved.</p>
-
-        <a href="\Dox\Akkodis_Letter_of_Recommendation.pdf" target="_blank" download>Download Letter of Recommendation</a>
-        <a href="\Dox\DimitarPorkovResume.pdf" target="_blank" download>Download Resume</a>
-    </footer>
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
