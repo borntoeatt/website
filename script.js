@@ -94,23 +94,22 @@ if (exportPdfBtn) {
         });
         
         const opt = {
-            margin: [0.5, 0.5, 0.5, 0.5],
+            margin: 0.5,
             filename: 'Dimitar_Porkov_Portfolio.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
+            image: { type: 'jpeg', quality: 0.95 },
             html2canvas: { 
-                scale: 1.5,
+                scale: 2,
                 useCORS: true,
                 logging: false,
-                width: 816,
-                windowWidth: 816
+                letterRendering: true,
+                scrollY: 0,
+                scrollX: 0
             },
             jsPDF: { 
                 unit: 'in', 
                 format: 'letter', 
-                orientation: 'portrait',
-                compress: true
-            },
-            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                orientation: 'portrait'
+            }
         };
         
         // Generate PDF
