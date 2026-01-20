@@ -192,19 +192,16 @@ footer {
     body {
         background-color: white !important;
         color: black !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
     main {
         box-shadow: none !important;
         margin: 0 !important;
-        padding: 1rem !important;
+        padding: 0.5in !important;
         max-width: 100% !important;
-    }
-    
-    /* Fix stretching - constrain content width */
-    #resume-content {
-        max-width: 7.5in !important;
-        margin: 0 auto !important;
+        width: 100% !important;
     }
     
     /* Ensure proper sizing for profile pic */
@@ -232,7 +229,7 @@ footer {
     
     /* Better spacing for PDF */
     p, ul, li {
-        margin: 0.5rem 0 !important;
+        margin: 0.4rem 0 !important;
     }
 }
 
