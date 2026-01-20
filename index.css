@@ -254,18 +254,20 @@ footer {
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff; /* Blue background */
-    color: #ffffff; /* White text */
+    color: #ffffff !important; /* White text - force it */
     font-size: 1rem;
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 2.3s ease, transform 2.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .button:hover {
     background-color: #0056b3; /* Darker blue on hover */
     transform: translateY(-2px); /* Slight lift on hover */
+    color: #ffffff !important; /* Keep white text on hover */
+    text-decoration: none;
 }
 /* Logo Style */
 .logo {
@@ -296,6 +298,16 @@ body.dark-mode {
 
 body.dark-mode a {
     color: #e69b11; /* Papaya color for links in dark mode */
+}
+
+/* Keep buttons blue in dark mode */
+body.dark-mode .button {
+    background-color: #007bff !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .button:hover {
+    background-color: #0056b3 !important;
 }
 
 /* Dark mode for specific elements */
