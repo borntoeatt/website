@@ -103,6 +103,7 @@ img { display: block; max-width: 100%; }
     transition: color .2s, background-color .2s;
 }
 .nav-links a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
+.nav-links a.active { color: var(--accent); background: var(--accent-soft); }
 
 .nav-actions { display: flex; align-items: center; gap: .4rem; }
 
@@ -281,6 +282,27 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 }
 .about-aside h3 { margin: 0 0 1rem; font-size: 1.05rem; }
 .chip-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .7rem; color: var(--text-muted); }
+
+/* Testimonial */
+.testimonial {
+    margin: 2.5rem 0 0;
+    padding: 1.6rem 1.8rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+}
+.testimonial blockquote {
+    margin: 0;
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+.testimonial blockquote::before { content: "“"; color: var(--accent); font-size: 1.6em; line-height: 0; vertical-align: -0.35em; margin-right: .15em; }
+.testimonial figcaption { margin-top: 1rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; font-size: .9rem; }
+.quote-author { font-weight: 600; color: var(--text); }
+.quote-role { color: var(--text-muted); }
+.testimonial figcaption a { margin-left: auto; font-family: var(--mono); font-size: .82rem; }
 
 /* ---------- Skills ---------- */
 .skills-grid {
@@ -500,3 +522,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 .pdf-rendering .pdf-header { display: block; text-align: center; margin-bottom: 1rem; }
 .pdf-rendering .pdf-header h1 { color: #1F4E78; margin: 0; }
 .pdf-rendering .pdf-only { display: block; }
+/* html2canvas can't parse color-mix(); use solid colors for tags in the PDF */
+.pdf-rendering .tag-list li { background: #eaf2ff; color: #0a4ea3; border: 1px solid #cfe0ff; }
+.pdf-rendering .skill-card { break-inside: avoid; page-break-inside: avoid; }

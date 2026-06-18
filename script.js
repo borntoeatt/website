@@ -108,6 +108,34 @@
         });
     }
 
+    /* ---------- Scrollspy nav ---------- */
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const navMap = {};
+    navAnchors.forEach(a => {
+        const href = a.getAttribute('href');
+        if (href && href.startsWith('#') && href.length > 1) navMap[href.slice(1)] = a;
+    });
+    const spySections = document.querySelectorAll('main section[id]');
+    if (spySections.length) {
+        let spyTicking = false;
+        const updateSpy = () => {
+            spyTicking = false;
+            let current = null;
+            // The current section is the last one whose top has scrolled
+            // above the line just below the sticky nav (~130px).
+            spySections.forEach(s => {
+                if (s.getBoundingClientRect().top <= 130) current = s.id;
+            });
+            navAnchors.forEach(a => a.classList.toggle('active', !!current && navMap[current] === a));
+        };
+        const onScroll = () => {
+            if (!spyTicking) { spyTicking = true; requestAnimationFrame(updateSpy); }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        updateSpy();
+    }
+
     /* ---------- Hero constellation ---------- */
     const hero = document.querySelector('.hero');
     const canvas = document.getElementById('heroCanvas');
