@@ -1,0 +1,12 @@
+{
+  "name": "Dimitar Porkov — Portfolio",
+  "short_name": "DP",
+  "description": "DevOps Engineer at SAP — Cloud Integration, CI/CD, Kubernetes.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#007bff",
+  "background_color": "#121212",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

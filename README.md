@@ -1,62 +1,50 @@
-# website
-My First website
+# portfolio.dporkov.tech
 
+[![Deploy to GitHub Pages](https://github.com/borntoeatt/website/actions/workflows/deploy.yml/badge.svg)](https://github.com/borntoeatt/website/actions/workflows/deploy.yml)
 
-first functionality:
+Personal portfolio / résumé site for **Dimitar Porkov** — DevOps Engineer at SAP.
+A single-page, fully static site hosted on GitHub Pages at
+[portfolio.dporkov.tech](https://portfolio.dporkov.tech).
 
-# Portfolio Website with PDF Export
+## Tech
 
-This is a personal portfolio website for Dimitar Porkov with built-in PDF export functionality.
+- Plain HTML, CSS and vanilla JavaScript — no build step.
+- [Inter](https://fonts.google.com/specimen/Inter) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) via Google Fonts.
+- [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) for client-side résumé export.
+- Google Analytics (gtag.js).
 
-## New Feature: PDF Export
+## Features
 
-### What's Added
+- **Light / dark theme** — toggled in the nav, follows the OS preference by default, and remembers the choice in `localStorage`.
+- **Responsive layout** — two-column hero, skills grid, and experience timeline collapse cleanly on mobile, with a slide-down nav menu.
+- **Scroll-reveal** animations (respects `prefers-reduced-motion`).
+- **One-click résumé export** — the "Download résumé" button renders the résumé sections to a clean, light-themed PDF entirely in the browser.
 
-1. **Export PDF Button** - A new button in the navigation bar (📄 Export as PDF)
-2. **html2pdf.js Library** - Automatically generates a PDF from your website content
-3. **Print-Optimized Styles** - Clean, professional PDF output
+## Structure
 
-### How It Works
+| File | Purpose |
+| --- | --- |
+| `index.html` | Page markup and content |
+| `index.css` | Design system (CSS variables), layout, theming, print/PDF styles |
+| `script.js` | Theme toggle, mobile menu, scroll reveal, PDF export |
+| `images/` | Profile photo |
+| `cloudie-logo.png` | Home-lab (cloudtobe.online) logo |
+| `Dox/` | Recommendation letter + résumé PDFs |
+| `CNAME` | Custom domain for GitHub Pages |
 
-1. Click the "📄 Export as PDF" button in the navigation
-2. The website automatically:
-   - Switches to light mode temporarily (for better PDF readability)
-   - Hides navigation, buttons, and footer
-   - Generates a clean PDF with your content
-   - Saves it as `Dimitar_Porkov_Portfolio.pdf`
-   - Restores dark mode if it was enabled
+## Local preview
 
-### Files Modified
+```bash
+python3 -m http.server 4173
+# then open http://localhost:4173
+```
 
-- **index.html** - Added html2pdf.js library and export button
-- **script.js** - Added PDF export functionality
-- **index.css** - Added print styles and export button styling
+## Deployment
 
-### Benefits
+Deployed to GitHub Pages by a GitHub Actions workflow ([.github/workflows/deploy.yml](.github/workflows/deploy.yml))
+on every push to `main`. No build step — the workflow uploads the static files as a Pages
+artifact and publishes them.
 
-✅ One-click PDF generation
-✅ No server-side processing needed
-✅ Works entirely in the browser
-✅ Automatically optimized for printing
-✅ Maintains dark mode preference after export
-
-### Deployment
-
-Simply upload these files to your GitHub Pages repository:
-- index.html
-- index.css
-- script.js
-
-The PDF export will work immediately without any additional setup.
-
-### Browser Compatibility
-
-Works in all modern browsers:
-- Chrome ✅
-- Firefox ✅
-- Safari ✅
-- Edge ✅
-
-## Alternative: Print to PDF
-
-Users can also use their browser's built-in print function (Ctrl+P / Cmd+P) and select "Save as PDF" for a similar result.
+**One-time setup:** in the repo on GitHub, go to **Settings → Pages → Build and deployment**
+and set **Source** to **GitHub Actions** (instead of "Deploy from a branch"). The custom
+domain (`CNAME`) is preserved automatically.

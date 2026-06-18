@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dimitar - Portfolio</title>
+    <title>Dimitar Porkov — DevOps Engineer</title>
+    <meta name="description" content="Dimitar Porkov — DevOps Engineer at SAP on the Cloud Integration project. Delivering software updates across all SAP NEO and Cloud Foundry landscapes, automating with Automation Pilot, Kubernetes and Gardener.">
+
+    <meta property="og:title" content="Dimitar Porkov — DevOps Engineer">
+    <meta property="og:description" content="DevOps Engineer at SAP on Cloud Integration — software-update delivery across SAP NEO and Cloud Foundry landscapes, automation with Automation Pilot, Kubernetes and Gardener.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portfolio.dporkov.tech">
+    <meta property="og:image" content="https://portfolio.dporkov.tech/images/profile.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="styles.css?v=1.1">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#007bff">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dimitar Porkov",
+      "jobTitle": "DevOps Engineer",
+      "worksFor": { "@type": "Organization", "name": "SAP" },
+      "url": "https://portfolio.dporkov.tech",
+      "image": "https://portfolio.dporkov.tech/images/profile.jpg",
+      "email": "dimitar@dporkov.tech",
+      "sameAs": [
+        "https://www.linkedin.com/in/dimitarporkov",
+        "https://github.com/borntoeatt"
+      ],
+      "knowsAbout": ["DevOps", "Kubernetes", "Gardener", "SAP Cloud Integration", "CI/CD", "GitOps", "Cloud Foundry", "Terraform", "Ansible"]
+    }
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SY9C8QKKZY"></script>
@@ -22,177 +54,382 @@
 
 <body>
 
-<button class="dark-mode-toggle" id="darkModeToggle">Toggle Dark Mode</button>
+<!-- ===== Navigation ===== -->
+<header class="site-nav no-print" id="siteNav">
+    <div class="nav-inner">
+        <a href="#top" class="brand">
+            <span class="brand-mark">DP</span>
+            <span class="brand-text">Dimitar Porkov</span>
+        </a>
 
-<header class="no-print">
-    <div class="header-content">
-        <h1>Hi, I'm Dimitar Porkov</h1>
-        <p>Cloud Operations Engineer for SAP</p>
+        <nav class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#homelab">Home Lab</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+            <button class="icon-btn nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+            </button>
+        </div>
     </div>
 </header>
 
-<nav class="no-print">
-    <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#experience-projects">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#homelab">Home Lab</a></li>
-        <li><a href="#" id="exportPdfBtn" class="export-pdf-btn">📄 Export as PDF</a></li>
-    </ul>
-</nav>
+<a id="top"></a>
 
 <main id="resume-content">
 
-    <!-- PDF Header (hidden on website, shown in PDF) -->
-    <div class="pdf-header" style="text-align:center;margin-bottom:1rem;">
-        <h1 style="margin:0;color:#1F4E78;">Dimitar Porkov</h1>
-        <p>Cloud Operations Engineer for SAP</p>
-        <p class="pdf-only" style="display:none;font-style:italic;color:#666;">
-            <a href="https://portfolio.dporkov.tech" style="color:#007bff;text-decoration:none;">https://portfolio.dporkov.tech</a>
-        </p>
+    <!-- PDF-only header (hidden on screen) -->
+    <div class="pdf-header">
+        <h1>Dimitar Porkov</h1>
+        <p>DevOps Engineer · SAP Cloud Integration</p>
+        <p class="pdf-only"><a href="https://portfolio.dporkov.tech">https://portfolio.dporkov.tech</a></p>
     </div>
 
-    <!-- About -->
-    <section id="about">
-        <h2>About Me</h2>
-
-        <div class="profile-container">
-            <img src="images/profile.jpg" alt="Dimitar Porkov" class="profile-pic">
-
-            <div class="about-text">
-                <strong>SAP CI Operations Professional | Cloud Technologies & CI/CD Specialist</strong>
-
-                <p>
-                    As a SAP CI Operations professional at Digitall, I specialize in
-                    <strong>Cloud Technologies</strong> with a strong foundation in
-                    <strong>CI/CD methodologies</strong>. With over
-                    <strong>three years of cloud experience</strong> and five years total in the field,
-                    I support development teams in delivering reliable and scalable solutions.
+    <!-- ===== Hero ===== -->
+    <section class="hero no-print">
+        <canvas id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="hero-grid">
+            <div class="hero-text">
+                <p class="eyebrow">DevOps Engineer · SAP Cloud Integration</p>
+                <h1>Hi, I'm <span class="accent">Dimitar Porkov</span>.</h1>
+                <p class="lede">
+                    I'm a DevOps Engineer at SAP, responsible for delivering software updates
+                    across every SAP Cloud Integration landscape — NEO and Cloud Foundry — and
+                    building the automations that keep those rollouts reliable with Automation
+                    Pilot, Kubernetes and Gardener.
                 </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Get in touch</a>
+                    <a href="#" class="btn btn-ghost" id="exportPdfBtn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        Download résumé
+                    </a>
+                </div>
+                <div class="hero-meta">
+                    <span><strong>3+</strong> years in cloud</span>
+                    <span><strong>6+</strong> years in tech</span>
+                    <span><strong>40+</strong> SAP landscapes</span>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <div class="photo-ring">
+                    <img src="images/profile-480.jpg" alt="Dimitar Porkov" class="profile-pic" width="240" height="240" decoding="async" fetchpriority="high">
+                </div>
             </div>
         </div>
-
-        <h3>Career Highlights</h3>
-        <ul>
-            <li>
-                <strong>Transformative Migration Projects:</strong>
-                Played an important role in major migration initiatives for
-                <strong>Johnson Controls International (JCI)</strong> and
-                <strong>Tyco Industries</strong> as part of technical support.
-            </li>
-            <li>
-                <strong>Strategic System Transitions:</strong>
-                Contributed to SAP's <strong>OneStrike</strong> and
-                <strong>Apache Camel 3.x</strong> migrations, collaborating with
-                development teams to ensure smooth transitions.
-            </li>
-        </ul>
-
-        <h3>Beyond the Desk</h3>
-        <ul>
-            <li><strong>Cycling</strong> for fitness and focus</li>
-            <li><strong>Traveling</strong> to explore new cultures</li>
-            <li>Running <strong>self-hosted applications</strong> in my home lab</li>
-        </ul>
     </section>
 
-    <!-- Experience -->
-    <section id="experience-projects" style="page-break-before: always;">
-        <h2>Experience & Projects</h2>
-
-        <div class="experience-item">
-            <h3>Cloud Operations Engineer</h3>
-            <p><strong>Company:</strong> Digitall | <strong>Period:</strong> December 2022 – Present</p>
-
-            <p>
-                I manage and support the SAP NEO environment across multiple global data centers,
-                overseeing <strong>20+ landscapes</strong>.
-            </p>
-
-            <p>
-                I work across <strong>Google Cloud</strong>, <strong>Microsoft Azure</strong>,
-                <strong>Alibaba Cloud</strong>, and <strong>AWS</strong> using
-                <strong>Cloud Foundry</strong> to deploy and scale applications.
-            </p>
-
-            <p>
-                Key contributions include <strong>SLES 15</strong> and
-                <strong>Apache Camel 3.x</strong> migrations, automation with
-                <strong>Jenkins</strong> and no-code solutions like <strong>Automation Pilot</strong>, 
-                and post-mortem analysis to improve platform reliability.
-            </p>
-
-            <p><strong>Key Responsibilities:</strong></p>
-            <ul>
-                <li>Advanced troubleshooting and log analysis</li>
-                <li>Supporting development teams with CI/CD workflows</li>
-                <li>SLA-driven support and incident resolution</li>
-                <li>Monitoring, recovery, and performance tuning</li>
-            </ul>
+    <!-- ===== About ===== -->
+    <section id="about" class="section">
+        <div class="section-head">
+            <span class="section-num">01</span>
+            <h2>About me</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-main">
+                <p class="about-tagline">DevOps Engineer · SAP Cloud Integration · Automation &amp; CI/CD</p>
+                <p>
+                    I'm a DevOps Engineer at <strong>SAP</strong> on the Cloud Integration project,
+                    where I own the delivery of software updates across all SAP landscapes — both
+                    the <strong>NEO</strong> and <strong>Cloud Foundry</strong> environments. With
+                    over three years of cloud experience and six years total in the field, I focus
+                    on automating these rollouts so they stay reliable and repeatable at scale.
+                </p>
+                <h3>Career highlights</h3>
+                <ul class="feature-list">
+                    <li>
+                        <strong>Transformative migration projects.</strong>
+                        Played a key role in major migration initiatives for Johnson Controls
+                        International (JCI) and Tyco Industries as part of technical support.
+                    </li>
+                    <li>
+                        <strong>Strategic system transitions.</strong>
+                        Contributed to SAP's OneStrike and Apache Camel 3.x migrations,
+                        collaborating with development teams to ensure smooth transitions.
+                    </li>
+                </ul>
+            </div>
+            <aside class="about-aside">
+                <h3>Beyond the desk</h3>
+                <ul class="chip-list">
+                    <li>🚴 Cycling for fitness &amp; focus</li>
+                    <li>✈️ Traveling to explore new cultures</li>
+                    <li>🖥️ Running self-hosted apps in my home lab</li>
+                </ul>
+            </aside>
         </div>
     </section>
 
-    <!-- Previous Experience -->
-    <section id="experience">
-        <h2>Previous Experience</h2>
-
-        <h3>Technical Support Analyst</h3>
-        <p><strong>Company:</strong> Akkodis | <strong>Period:</strong> November 2019 – December 2022</p>
-        <p>
-            Throughout my career, I've been fortunate to be part of transformative projects that have 
-            shaped the technological landscape of major industries. Working with Modis, I played a 
-            critical role in the mass migration initiatives for JCI (Johnson Controls International) 
-            and Tyco Industries, where I gained invaluable experience in large-scale data migrations 
-            and systems integration. These projects demanded a deep understanding of infrastructure, 
-            meticulous planning, and a collaborative approach to ensure seamless transitions without 
-            disrupting business operations.
-        </p>
-        <p>
-            Through these experiences, I've developed a strong skill set in project management, 
-            data migration strategies, and cross-functional teamwork. Being able to contribute to 
-            such pivotal projects has fueled my passion for innovation and has solidified my 
-            commitment to driving impactful technological solutions in every organization I serve.
-        </p>
+    <!-- ===== Skills ===== -->
+    <section id="skills" class="section no-print">
+        <div class="section-head">
+            <span class="section-num">02</span>
+            <h2>Tech stack</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Cloud &amp; SAP platforms</h3>
+                <ul class="tag-list">
+                    <li>SAP NEO</li><li>Cloud Foundry</li><li>Google Cloud</li>
+                    <li>Microsoft Azure</li><li>AWS</li><li>Alibaba Cloud</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Containers &amp; orchestration</h3>
+                <ul class="tag-list">
+                    <li>Kubernetes</li><li>Gardener</li><li>Docker</li><li>K3s</li><li>Proxmox</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>CI/CD &amp; GitOps</h3>
+                <ul class="tag-list">
+                    <li>Automation Pilot</li><li>GitHub Actions</li><li>Argo CD</li>
+                    <li>Jenkins</li><li>GitOps</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Infrastructure &amp; IaC</h3>
+                <ul class="tag-list">
+                    <li>Terraform</li><li>Ansible</li><li>SLES 15</li>
+                    <li>ZFS</li><li>Nginx Proxy Manager</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Languages &amp; web</h3>
+                <ul class="tag-list">
+                    <li>Python</li><li>Bash</li><li>TypeScript</li>
+                    <li>nginx</li><li>Cloudflare Workers</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Phone: +359 898 595 251</p>
-        <p>Email: <a href="mailto:dimitar@dporkov.tech">dimitar@dporkov.tech</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/dimitarporkov">dporkov</a></p>
-        <p style="margin-top: 1rem;">
-            <a href="\Dox\Akkodis_Letter_of_Recommendation.pdf" target="_blank" class="recommendation-button">
-                📄 Letter of Recommendation
+    <!-- ===== Experience ===== -->
+    <section id="experience" class="section">
+        <div class="section-head">
+            <span class="section-num">03</span>
+            <h2>Experience</h2>
+        </div>
+        <div class="timeline">
+            <article class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-top">
+                        <h3>DevOps Engineer — Cloud Integration</h3>
+                        <span class="period">Mar 2026 — Present</span>
+                    </div>
+                    <p class="company">SAP</p>
+                    <p>
+                        I'm responsible for the delivery of software updates across <strong>all SAP
+                        Cloud Integration landscapes</strong>, spanning both the <strong>NEO</strong>
+                        and <strong>Cloud Foundry</strong> environments. I design and run the
+                        automations that drive these rollouts — primarily with <strong>Automation
+                        Pilot</strong> — so updates ship reliably and repeatably at scale.
+                    </p>
+                    <p>
+                        I also work with <strong>Kubernetes</strong> and <strong>Gardener</strong> to
+                        operate and scale the underlying platform, alongside earlier contributions to
+                        <strong>SLES 15</strong> and <strong>Apache Camel 3.x</strong> migrations.
+                    </p>
+                    <ul class="feature-list compact">
+                        <li>Software-update delivery across all NEO &amp; Cloud Foundry landscapes</li>
+                        <li>Automating rollouts with Automation Pilot</li>
+                        <li>Kubernetes &amp; Gardener cluster operations</li>
+                        <li>Advanced troubleshooting, log analysis and post-mortems</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-top">
+                        <h3>Cloud Operations Engineer</h3>
+                        <span class="period">Dec 2022 — Mar 2026</span>
+                    </div>
+                    <p class="company">Digitall</p>
+                    <p>
+                        Managed and supported the SAP NEO environment across multiple global data
+                        centers, overseeing <strong>40+ landscapes</strong>, and worked across Google
+                        Cloud, Microsoft Azure, Alibaba Cloud and AWS using Cloud Foundry to deploy
+                        and scale applications.
+                    </p>
+                    <p>
+                        Key contributions included <strong>SLES 15</strong> and
+                        <strong>Apache Camel 3.x</strong> migrations, automation with Jenkins and
+                        no-code solutions like Automation Pilot, and post-mortem analysis to improve
+                        platform reliability — the foundation that led to my move into the
+                        Cloud Integration DevOps team at SAP.
+                    </p>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-top">
+                        <h3>Technical Support Analyst</h3>
+                        <span class="period">Nov 2019 — Dec 2022</span>
+                    </div>
+                    <p class="company">Akkodis</p>
+                    <p>
+                        Played a critical role in mass-migration initiatives for
+                        <strong>JCI (Johnson Controls International)</strong> and
+                        <strong>Tyco Industries</strong>, gaining hands-on experience in large-scale
+                        data migrations and systems integration. These projects demanded deep
+                        infrastructure knowledge, meticulous planning, and a collaborative approach
+                        to ensure seamless transitions without disrupting business operations.
+                    </p>
+                    <p>
+                        Through this work I developed a strong skill set in project management, data
+                        migration strategies, and cross-functional teamwork.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===== Home Lab ===== -->
+    <section id="homelab" class="section no-print">
+        <div class="section-head">
+            <span class="section-num">04</span>
+            <h2>Home Lab</h2>
+        </div>
+
+        <div class="homelab-card">
+            <div class="homelab-text">
+                <p>
+                    The home lab is my playground — a pile of bare metal running a proper
+                    self-hosted stack. It's where I break the same tools I use at work in a place
+                    where nobody gets paged, and where I ship gloriously unnecessary side projects.
+                    It's all open source, mess and all, on
+                    <a href="https://github.com/borntoeatt" target="_blank" rel="noopener">GitHub</a>.
+                </p>
+            </div>
+            <a class="homelab-logo" href="https://nextcloud.cloudtobe.online/index.php/s/imMcmtf6kewaSAa" target="_blank" rel="noopener">
+                <img src="cloudie-logo.png" alt="Cloudtobe Logo">
+                <span>cloudtobe.online ↗</span>
             </a>
+        </div>
+
+        <h3 class="homelab-subhead">Projects I build &amp; self-host</h3>
+        <div class="projects-grid">
+
+            <a class="project-card" href="https://github.com/borntoeatt/beleganski-jaas" target="_blank" rel="noopener">
+                <div class="project-top">
+                    <h3>beleganski-jaas</h3>
+                    <span class="repo-icon" aria-hidden="true">↗</span>
+                </div>
+                <p>
+                    Jacuzzi as a Service: a rakia-powered open-source human, deployed to a hot tub
+                    during work hours. Underneath the joke is a genuine GitOps pipeline — Argo CD
+                    syncing to Kubernetes, GitHub Actions shipping images to Docker Hub. If you're
+                    going to over-engineer a punchline, do it properly.
+                </p>
+                <ul class="tag-list">
+                    <li>Kubernetes</li><li>Argo CD</li><li>GitOps</li><li>Docker</li><li>GitHub Actions</li>
+                </ul>
+            </a>
+
+            <a class="project-card" href="https://github.com/borntoeatt/mission-control" target="_blank" rel="noopener">
+                <div class="project-top">
+                    <h3>Mission Control</h3>
+                    <span class="repo-icon" aria-hidden="true">↗</span>
+                </div>
+                <p>
+                    My single pane of glass for the lab — and, fine, also the weather, crypto
+                    prices and NASA's photo of the day. Pulls everything from free, keyless public
+                    APIs and ships as a tiny <strong>nginx-alpine</strong> container.
+                </p>
+                <ul class="tag-list">
+                    <li>Docker</li><li>nginx</li><li>JavaScript</li><li>REST APIs</li>
+                </ul>
+            </a>
+
+            <a class="project-card" href="https://github.com/borntoeatt/homelab" target="_blank" rel="noopener">
+                <div class="project-top">
+                    <h3>homelab</h3>
+                    <span class="repo-icon" aria-hidden="true">↗</span>
+                </div>
+                <p>
+                    The actual config behind the lab: a <strong>gethomepage</strong> dashboard that
+                    auto-discovers my Docker and Kubernetes services, plus the scrappy shell scripts
+                    I keep reaching for — like the one that hunts down free IPs so I stop guessing.
+                </p>
+                <ul class="tag-list">
+                    <li>Shell</li><li>Docker</li><li>Kubernetes</li><li>gethomepage</li>
+                </ul>
+            </a>
+
+            <a class="project-card" href="https://github.com/borntoeatt/grid-defense" target="_blank" rel="noopener">
+                <div class="project-top">
+                    <h3>Grid Defense</h3>
+                    <span class="repo-icon" aria-hidden="true">↗</span>
+                </div>
+                <p>
+                    What happens when "I'll build a small tower-defense game" gets completely out
+                    of hand — six tower classes, boss waves, an offline-capable <strong>PWA</strong>,
+                    and a global leaderboard running on a <strong>Cloudflare Worker</strong>.
+                    Nobody asked for this. I built it anyway.
+                </p>
+                <ul class="tag-list">
+                    <li>TypeScript</li><li>PWA</li><li>Cloudflare Workers</li><li>Canvas</li>
+                </ul>
+            </a>
+
+        </div>
+        <p class="projects-more">
+            <a href="https://github.com/borntoeatt?tab=repositories" target="_blank" rel="noopener">See all repositories on GitHub →</a>
         </p>
     </section>
 
-    <!-- Home Lab -->
-    <section id="homelab">
-        <h2>Home Lab</h2>
-        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <div style="flex: 1;">
-                <p>
-                    In my home lab, I experiment with various technologies to continuously improve my skills:
-                </p>
-                <p>
-                    <strong>Tech Stack:</strong> Proxmox, Docker, Kubernetes (K3s), Nginx Proxy Manager (NPM), 
-                    Terraform, Ansible, Jenkins, Bash, Python, ZFS
-                </p>
-            </div>
-            <div style="margin-left: 2rem;">
-                <a href="https://nextcloud.cloudtobe.online/index.php/s/imMcmtf6kewaSAa" target="_blank">
-                    <img src="cloudie-logo.png" alt="Cloudtobe Logo" class="logo" style="width: 120px; height: auto;">
-                </a>
-            </div>
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="section">
+        <div class="section-head">
+            <span class="section-num">05</span>
+            <h2>Get in touch</h2>
+        </div>
+        <div class="contact-grid">
+            <a class="contact-card" href="mailto:dimitar@dporkov.tech">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">dimitar@dporkov.tech</span>
+            </a>
+            <a class="contact-card" href="tel:+359898595251">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+359 898 595 251</span>
+            </a>
+            <a class="contact-card" href="https://www.linkedin.com/in/dimitarporkov" target="_blank" rel="noopener">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">in/dimitarporkov ↗</span>
+            </a>
+            <a class="contact-card" href="https://github.com/borntoeatt" target="_blank" rel="noopener">
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">@borntoeatt ↗</span>
+            </a>
+            <a class="contact-card" href="Dox/Akkodis_Letter_of_Recommendation.pdf" target="_blank" rel="noopener">
+                <span class="contact-label">Reference</span>
+                <span class="contact-value">Letter of Recommendation ↗</span>
+            </a>
+            <a class="contact-card" href="https://nextcloud.cloudtobe.online/index.php/s/imMcmtf6kewaSAa" target="_blank" rel="noopener">
+                <span class="contact-label">Certifications</span>
+                <span class="contact-value">View on my cloud ↗</span>
+            </a>
         </div>
     </section>
 
 </main>
 
-<footer class="no-print">
-    <p>© 2024 Dimitar Porkov. All rights reserved.</p>
+<footer class="site-footer no-print">
+    <p>© <span id="year">2024</span> Dimitar Porkov. All rights reserved.</p>
+    <p class="footer-built">Built with plain HTML &amp; CSS · hosted on GitHub Pages</p>
 </footer>
 
 <script src="script.js"></script>
