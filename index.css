@@ -129,7 +129,7 @@ html[data-theme="dark"] .icon-moon { display: none; }
 /* ---------- Layout primitives ---------- */
 main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 
-.section { padding: 4.5rem 0; border-top: 1px solid var(--border); }
+.section { padding: 4.5rem 0; border-top: 1px solid var(--border); scroll-margin-top: 72px; }
 .section:first-of-type { border-top: none; }
 
 .section-head { display: flex; align-items: baseline; gap: .85rem; margin-bottom: 2rem; }
@@ -332,7 +332,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 }
 
 /* ---------- Projects ---------- */
-.section-intro { color: var(--text-muted); max-width: 46rem; margin: -.6rem 0 2rem; }
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -444,7 +443,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 .footer-built { font-size: .82rem; margin-top: .3rem; opacity: .8; }
 
 /* ---------- Reveal animation ---------- */
-.section, .hero { opacity: 1; }
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in-view { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
@@ -464,6 +462,12 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 }
 
 @media (max-width: 680px) {
+    .icon-btn { width: 44px; height: 44px; }
+    .section { padding: 3rem 0; }
+    .hero { padding: 2.5rem 0 3rem; }
+    .timeline-item { padding-left: 1.6rem; }
+    .timeline-card { padding: 1.2rem 1.1rem; }
+    .homelab-card { padding: 1.4rem 1.2rem; }
     .nav-links {
         position: absolute;
         top: 100%; left: 0; right: 0;
@@ -519,6 +523,9 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 .pdf-rendering p { break-inside: avoid; page-break-inside: avoid; }
 .pdf-rendering .section-head,
 .pdf-rendering h3 { break-after: avoid; page-break-after: avoid; }
+/* html2pdf renders screen styles (never @media print), so the export
+   state needs its own copy of the Experience page break */
+.pdf-rendering #experience { break-before: page; page-break-before: always; }
 .pdf-rendering .pdf-header { display: block; text-align: center; margin-bottom: 1rem; }
 .pdf-rendering .pdf-header h1 { color: #1F4E78; margin: 0; }
 .pdf-rendering .pdf-only { display: block; }

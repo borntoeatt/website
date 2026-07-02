@@ -5,19 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 — Page not found · Dimitar Porkov</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <script>
+        // Same theme resolution as the main site: saved preference, else OS.
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* keep default dark */ }
+        })();
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        :root { color-scheme: dark; }
+        :root {
+            --bg: #121212; --text: #e0e0e0; --muted: #9aa1aa; --accent: #3a8dff;
+            color-scheme: dark;
+        }
+        html[data-theme="light"] {
+            --bg: #f4f4f9; --text: #222933; --muted: #5b6471; --accent: #007bff;
+            color-scheme: light;
+        }
         body {
             margin: 0; min-height: 100vh;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            background: #121212; color: #e0e0e0;
+            background: var(--bg); color: var(--text);
             font-family: 'Inter', system-ui, sans-serif; text-align: center; padding: 2rem;
         }
-        .code { font-family: 'JetBrains Mono', monospace; color: #3a8dff; font-size: 1rem; letter-spacing: .1em; }
+        .code { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 1rem; letter-spacing: .1em; }
         h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin: .5rem 0; }
-        p { color: #9aa1aa; max-width: 30rem; }
+        p { color: var(--muted); max-width: 30rem; }
         a {
             display: inline-block; margin-top: 1.5rem; padding: .7rem 1.4rem;
             background: #007bff; color: #fff; text-decoration: none;

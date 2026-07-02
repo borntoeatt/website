@@ -67,44 +67,74 @@
     }
 
     /* ---------- PDF export ---------- */
+    // html2pdf (~1MB) is only needed when the user actually exports, so it
+    // is lazy-loaded on first click instead of blocking every page load.
+    const HTML2PDF_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+    let html2pdfLoading = null;
+    function loadHtml2pdf() {
+        if (typeof html2pdf !== 'undefined') return Promise.resolve();
+        if (!html2pdfLoading) {
+            html2pdfLoading = new Promise((resolve, reject) => {
+                const s = document.createElement('script');
+                s.src = HTML2PDF_SRC;
+                s.onload = resolve;
+                s.onerror = () => { html2pdfLoading = null; reject(new Error('html2pdf failed to load')); };
+                document.head.appendChild(s);
+            });
+        }
+        return html2pdfLoading;
+    }
+
     const exportBtn = document.getElementById('exportPdfBtn');
     if (exportBtn) {
         exportBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            exportBtn.setAttribute('aria-busy', 'true');
 
-            if (typeof html2pdf === 'undefined') {
-                alert('PDF library is still loading. Please try again in a moment.');
-                return;
-            }
+            loadHtml2pdf().then(() => {
+                const element = document.getElementById('resume-content');
+                const body = document.body;
 
-            const element = document.getElementById('resume-content');
-            const body = document.body;
-
-            // Switch to a clean, light, print-friendly rendering state.
-            // Force any scroll-reveal sections fully visible so they aren't
-            // captured mid-animation (or invisible) in the exported PDF.
-            body.classList.add('pdf-rendering');
-            document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
-
-            const opt = {
-                margin: 0.5,
-                filename: 'Dimitar_Porkov_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.95 },
-                html2canvas: { scale: 2, useCORS: true, logging: false, letterRendering: true },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-                pagebreak: {
-                    mode: ['css', 'legacy'],
-                    avoid: ['.timeline-item', '.contact-card', '.about-aside', '.feature-list li', '.section-head']
-                }
-            };
-
-            html2pdf().set(opt).from(element).save()
-                .then(() => body.classList.remove('pdf-rendering'))
-                .catch(err => {
-                    console.error('PDF generation error:', err);
-                    body.classList.remove('pdf-rendering');
-                    alert('Error generating PDF. Please try again.');
+                // Switch to a clean, light, print-friendly rendering state.
+                // Force any scroll-reveal sections fully visible so they aren't
+                // captured mid-animation (or invisible) in the exported PDF —
+                // remembering which ones we forced so we can restore them.
+                body.classList.add('pdf-rendering');
+                const forced = [];
+                document.querySelectorAll('.reveal:not(.in-view)').forEach(el => {
+                    el.classList.add('in-view');
+                    forced.push(el);
                 });
+                const restore = () => {
+                    body.classList.remove('pdf-rendering');
+                    forced.forEach(el => el.classList.remove('in-view'));
+                    exportBtn.removeAttribute('aria-busy');
+                };
+
+                const opt = {
+                    margin: 0.5,
+                    filename: 'Dimitar_Porkov_Resume.pdf',
+                    image: { type: 'jpeg', quality: 0.95 },
+                    html2canvas: { scale: 2, useCORS: true, logging: false, letterRendering: true },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    pagebreak: {
+                        mode: ['css', 'legacy'],
+                        avoid: ['.timeline-item', '.contact-card', '.about-aside', '.feature-list li', '.section-head']
+                    }
+                };
+
+                return html2pdf().set(opt).from(element).save()
+                    .then(restore)
+                    .catch(err => {
+                        console.error('PDF generation error:', err);
+                        restore();
+                        alert('Error generating PDF. Please try again.');
+                    });
+            }).catch(err => {
+                console.error(err);
+                exportBtn.removeAttribute('aria-busy');
+                alert('Could not load the PDF library. Please check your connection and try again.');
+            });
         });
     }
 
@@ -116,15 +146,20 @@
         if (href && href.startsWith('#') && href.length > 1) navMap[href.slice(1)] = a;
     });
     const spySections = document.querySelectorAll('main section[id]');
+    const siteNav = document.getElementById('siteNav');
     if (spySections.length) {
         let spyTicking = false;
+        let spyOffset = 130;
+        const measureSpyOffset = () => {
+            // The "current section" line sits a bit below the sticky nav, so
+            // the offset follows the nav's real height instead of a magic number.
+            spyOffset = (siteNav ? siteNav.offsetHeight : 66) + 64;
+        };
         const updateSpy = () => {
             spyTicking = false;
             let current = null;
-            // The current section is the last one whose top has scrolled
-            // above the line just below the sticky nav (~130px).
             spySections.forEach(s => {
-                if (s.getBoundingClientRect().top <= 130) current = s.id;
+                if (s.getBoundingClientRect().top <= spyOffset) current = s.id;
             });
             navAnchors.forEach(a => a.classList.toggle('active', !!current && navMap[current] === a));
         };
@@ -132,7 +167,8 @@
             if (!spyTicking) { spyTicking = true; requestAnimationFrame(updateSpy); }
         };
         window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll);
+        window.addEventListener('resize', () => { measureSpyOffset(); onScroll(); });
+        measureSpyOffset();
         updateSpy();
     }
 
@@ -142,6 +178,8 @@
     if (hero && canvas && canvas.getContext) {
         const ctx = canvas.getContext('2d');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // Same breakpoint as the CSS mobile styles — one source of truth.
+        const mqMobile = window.matchMedia('(max-width: 680px)');
 
         const ICONS = {
             user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg>',
@@ -191,7 +229,7 @@
         function hidePop() { hovered = null; pop.classList.remove('show'); }
 
         function build() {
-            interactive = W >= 680;
+            interactive = !mqMobile.matches;
             const count = interactive ? Math.min(56, Math.round(W / 26)) : 22;
             nodes = [];
             for (let i = 0; i < count; i++) {
@@ -201,7 +239,11 @@
                     r: 1.2 + Math.random() * 1.1
                 });
             }
-            LINKS.forEach((l, i) => { nodes[i].link = l; nodes[i].r = 4; });
+            // Nav nodes are only meaningful with hotspots (desktop); on
+            // small screens leave every node as a plain ambient dot.
+            if (interactive) {
+                LINKS.forEach((l, i) => { nodes[i].link = l; nodes[i].r = 4; });
+            }
 
             hotspots.forEach(h => h.el.remove());
             hotspots = [];
@@ -229,6 +271,18 @@
             canvas.width = W * dpr; canvas.height = H * dpr;
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             build();
+        }
+
+        // Mobile browsers fire resize when the URL bar shows/hides during
+        // scroll — only the height changes, so skip the full rebuild then.
+        function onResize() {
+            if (hero.clientWidth === W) {
+                H = hero.clientHeight;
+                canvas.height = H * dpr;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                return;
+            }
+            resize();
         }
 
         const TAU = Math.PI * 2;
@@ -277,13 +331,26 @@
             raf = requestAnimationFrame(frame);
         }
 
+        // Run the animation only while the hero is actually on screen AND
+        // the tab is visible — no wasted CPU below the fold or in background.
+        let heroOnScreen = true;
+        function startLoop() { if (!raf) raf = requestAnimationFrame(frame); }
+        function stopLoop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+        function syncLoop() {
+            if (heroOnScreen && !document.hidden) startLoop();
+            else stopLoop();
+        }
+
         resize();
-        frame();
-        window.addEventListener('resize', resize);
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) { cancelAnimationFrame(raf); raf = null; }
-            else if (!raf) { raf = requestAnimationFrame(frame); }
-        });
-        if (themeToggle) themeToggle.addEventListener('click', () => setTimeout(readColors, 0));
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver((entries) => {
+                heroOnScreen = entries[0].isIntersecting;
+                syncLoop();
+            }).observe(hero);
+        }
+        syncLoop();
+        window.addEventListener('resize', onResize);
+        document.addEventListener('visibilitychange', syncLoop);
+        if (themeToggle) themeToggle.addEventListener('click', readColors);
     }
 })();
