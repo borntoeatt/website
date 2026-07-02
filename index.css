@@ -532,3 +532,5 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 /* html2canvas can't parse color-mix(); use solid colors for tags in the PDF */
 .pdf-rendering .tag-list li { background: #eaf2ff; color: #0a4ea3; border: 1px solid #cfe0ff; }
 .pdf-rendering .skill-card { break-inside: avoid; page-break-inside: avoid; }
+/* Fixed two-column layout so auto-fit can't strand cards in the export */
+.pdf-rendering .skills-grid { grid-template-columns: repeat(2, 1fr); }

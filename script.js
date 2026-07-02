@@ -119,7 +119,7 @@
                     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
                     pagebreak: {
                         mode: ['css', 'legacy'],
-                        avoid: ['.timeline-item', '.contact-card', '.about-aside', '.feature-list li', '.section-head']
+                        avoid: ['.timeline-item', '.contact-card', '.about-aside', '.feature-list li', '.section-head', '.skill-card', '.testimonial']
                     }
                 };
 
